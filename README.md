@@ -22,8 +22,13 @@ el objetivo es vender utiles e indumentaria a traves de un sistema separado.
 
 ### Back-End
 
-[Express](https://expressjs.com/es/)
-[Mongoose](https://mongoosejs.com/)
+- [Express](https://expressjs.com/es/)
+- [Mongoose](https://mongoosejs.com/)
+
+
+
+
+--------------------------------------------------------------------------------------------------------
 
 ## Vista del cliente
 ![Imagen Vista Cliente](https://github.com/DaniPoka/BID-Solo-Project/blob/main/VistaClienteLogueado.jpg)
