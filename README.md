@@ -5,7 +5,7 @@
 ## Proyecto AGShop
 
 AGShop nace con la idea de tener una tienda dentro de un colegio,
-el objetivo vender utiles e indumentaria a traves de un sistema separado.
+el objetivo es vender utiles e indumentaria a traves de un sistema separado.
 
 ## Utilizaremos
 
@@ -26,4 +26,4 @@ el objetivo vender utiles e indumentaria a traves de un sistema separado.
 [Mongoose](https://mongoosejs.com/)
 
 ## Vista del cliente
-![Imagen Vista Cliente](https://raw.githubusercontent.com/VistaClienteLogueado.jpg)
+![Imagen Vista Cliente](https://github.com/DaniPoka/BID-Solo-Project/blob/main/VistaClienteLogueado.jpg)
