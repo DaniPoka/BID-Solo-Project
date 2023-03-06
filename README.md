@@ -26,5 +26,5 @@ el objetivo vender utiles e indumentaria a traves de un sistema separado.
 [Mongoose](https://mongoosejs.com/)
 
 ## Vista del cliente
-
+![Imagen Vista Cliente]
 (https://raw.githubusercontent.com/VistaClienteLogueado.jpg)
