@@ -5,7 +5,7 @@
 ## Proyecto AGShop
 
 AGShop nace con la idea de tener una tienda dentro de un colegio,
-el objetivo vender utiles e indumentaria a traves de un sistema separado.
+el objetivo es vender utiles e indumentaria a traves de un sistema separado.
 
 ## Utilizaremos
 
@@ -14,17 +14,27 @@ el objetivo vender utiles e indumentaria a traves de un sistema separado.
 ### Front-End
 - [React](https://es.reactjs.org/)
 
+
 - [Formik](https://formik.org/)
-[React Router](https://reactrouter.com/en/main)
-[Sweetalert2](https://sweetalert2.github.io/)
-[Material UI](https://mui.com/material-ui/getting-started/overview/)
-[Bootstrap](https://react-bootstrap.github.io/)
+
+- [React Router](https://reactrouter.com/en/main)
+
+- [Sweetalert2](https://sweetalert2.github.io/)
+
+- [Material UI](https://mui.com/material-ui/getting-started/overview/)
+
+- [Bootstrap](https://react-bootstrap.github.io/)
 
 ### Back-End
 
-[Express](https://expressjs.com/es/)
-[Mongoose](https://mongoosejs.com/)
+- [Express](https://expressjs.com/es/)
+
+- [Mongoose](https://mongoosejs.com/)
+
+
+
+
+--------------------------------------------------------------------------------------------------------
 
 ## Vista del cliente
-
-(https://raw.githubusercontent.com/VistaClienteLogueado.jpg)
+![Imagen Vista Cliente](https://github.com/DaniPoka/BID-Solo-Project/blob/main/VistaClienteLogueado.jpg)
