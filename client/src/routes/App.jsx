@@ -1,6 +1,7 @@
 import { Auth0Provider, withAuthenticationRequired } from "@auth0/auth0-react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar/Navbar";
+import Carro from "../pages/Carro";
 import Home from "../pages/Home";
 
 
@@ -40,6 +41,7 @@ export default function App() {
                         path="/login"
                         element={<ProtectedRoute />}
                     />
+                    <Route path="/carrito" element={<Carro/>} />
                 </Routes>
             </Auth0ProviderWithRedirectCallback>
         </BrowserRouter>

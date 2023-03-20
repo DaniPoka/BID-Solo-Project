@@ -12,6 +12,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
+import { useContext } from 'react';
+import { dataContext } from './Context/DataContext';
+import axios from 'axios';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -24,12 +27,35 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
-export default function Product({item, inShoppingCart}) {
+export default function Product() {
     const [expanded, setExpanded] = React.useState(false);
+
+    const { carro, setCarro, cantidad, setCantidad } = useContext(dataContext)
+
+    const [items, setItems] = useState([])
+
+    useEffect(() => {
+
+        const getData = async () => {
+            const respuesta = await axios.get(`${process.env.REACT_APP_API_URL}/item/`);
+            setItems(respuesta.data);
+            console.log(items);
+        }
+
+
+        getData();
+
+    }, [])
 
     const handleShopClick = () => 
         alert('Added to the shopping cart');
-    //  inShoppingCart(item.id, 1);
+        setCantidad(cantidad + 1)
+        if (carro.find(item => item.id === product.id)) {
+            const products = carro.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
+            return setCarro([...products])
+        }
+        setCarro([...carro, product])
+    
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
