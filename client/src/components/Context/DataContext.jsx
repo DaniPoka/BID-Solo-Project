@@ -13,33 +13,47 @@ const DataProvider = ({ children }) => {
         cantidad.forEach(function (numero) {
             suma = suma + numero;
         });
-        console.log(cantidad)
-        console.log(suma)
-        setCantidad(suma)
-    }, [carro])
-    useEffect(() => {
-        let cantidadv1 = JSON.parse(localStorage.getItem("cantidad"))
-        if (cantidadv1) {
-            setCantidad(cantidadv1)
-        }
-    }, [])
-    useEffect(() => {
-        localStorage.setItem("cantidad", JSON.stringify(cantidad))
-    }, [cantidad])
-    useEffect(() => {
-        let data = localStorage.getItem("producto");
-        if (data) {
-            setCarro(JSON.parse(data))
-        }
-    }, [])
-    useEffect(() => {
-        localStorage.setItem("producto", JSON.stringify(carro));
-    }, [carro])
-    return (
-        <dataContext.Provider value={{ carro, setCarro, cantidad, setCantidad }}>
-            {children}
-        </dataContext.Provider>
-    )
-};
 
-export default DataProvider;
+        const [item, setItem] = useState([])
+
+        useEffect(() => {
+
+            const getData = async () => {
+                const respuesta = await axios.get(`${process.env.REACT_APP_API_URL}/item/`);
+                setItem(respuesta.item);
+                console.log(item);
+            }
+        });
+
+        getData();
+
+            console.log(cantidad)
+            console.log(suma)
+            setCantidad(suma)
+        }, [carro])
+        useEffect(() => {
+            let cantidadv1 = JSON.parse(localStorage.getItem("cantidad"))
+            if (cantidadv1) {
+                setCantidad(cantidadv1)
+            }
+        }, [])
+        useEffect(() => {
+            localStorage.setItem("cantidad", JSON.stringify(cantidad))
+        }, [cantidad])
+        useEffect(() => {
+            let data = item;
+            if (data) {
+                setCarro(JSON.parse(item))
+            }
+        }, [])
+        useEffect(() => {
+            localStorage.setItem("producto", JSON.stringify(carro));
+        }, [carro])
+        return (
+            <dataContext.Provider value={{ carro, setCarro, cantidad, setCantidad }}>
+                {children}
+            </dataContext.Provider>
+        )
+    };
+
+    export default DataProvider;

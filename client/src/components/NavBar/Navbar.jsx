@@ -9,7 +9,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 
 
-const NavBar = ({ totalItems }) => {
+const NavBar = ({ cantidad }) => {
 
     const { isAuthenticated } = useAuth0();
 
@@ -23,7 +23,7 @@ const NavBar = ({ totalItems }) => {
                     <div />
                     <div className='buttons'>
                         <IconButton component={Link} to="/ShoppingCart" aria-label="Show cart items" color="primary">
-                            <Badge badgeContent={totalItems} color="secondary">
+                            <Badge badgeContent={cantidad} color="secondary">
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>
