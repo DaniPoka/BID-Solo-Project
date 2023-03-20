@@ -15,6 +15,8 @@ import Favorite from '@mui/icons-material/Favorite';
 import { useContext } from 'react';
 import { dataContext } from './Context/DataContext';
 import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -62,7 +64,7 @@ export default function Product() {
     };
 
 
-    const [clicked, setClicked] = React.useState(false);
+    const [clicked, setClicked] = useState(false);
     const handleClickFav = (id) => {
         setClicked(current => !current)
         if (clicked) {

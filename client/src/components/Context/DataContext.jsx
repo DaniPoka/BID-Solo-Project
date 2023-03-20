@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
 export const dataContext = createContext();
@@ -20,12 +21,14 @@ const DataProvider = ({ children }) => {
 
             const getData = async () => {
                 const respuesta = await axios.get(`${process.env.REACT_APP_API_URL}/item/`);
-                setItem(respuesta.item);
+                setItem(respuesta.data);
                 console.log(item);
             }
-        });
-
-        getData();
+    
+    
+            getData();
+    
+        }, [])
 
             console.log(cantidad)
             console.log(suma)
