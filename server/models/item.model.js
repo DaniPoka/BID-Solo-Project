@@ -4,35 +4,30 @@ const mongoose = require('mongoose');
 const ItemSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        minlength: [3, 'The minimun is 3'],
+        
     },
     brand: {
         type: String,
+        minlength: [3, 'The minimun is 3'],
+        
     },
     imgurl: {
 
     },
     description: {
         type: String,
-        required: true
-    },
-    price: {
-        type: Number,
-        required: true
+        minlength: [10, 'The minimun is 10'],
+        
     },
     category: {
-        type: String,
+        type: String,        
     },
-    stock: {
-        type: Number
+    price: {
+        type: Number,        
     },
-    fav : {
-        type: Boolean,
-        default: false
-    }
-    
 
-},);
+}, { timestamps: true });
 
 module.exports.Item = mongoose.model('Item', ItemSchema);
 

@@ -29,21 +29,20 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
-export default function Product() {
+export default function Product(item) {
     const [expanded, setExpanded] = useState(false);
 
-    const { carro, setCarro, cantidad, setCantidad } = useContext(dataContext)
+    const { carro, setCarro, cantidad, setCantidad } = useContext(dataContext);
 
 
     const handleShopClick = () => {
         alert('Added to the shopping cart');
         setCantidad(cantidad + 1);
-    }
+    };
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-
 
 
     const [clicked, setClicked] = useState(false);
@@ -53,23 +52,7 @@ export default function Product() {
             alert('product was deleted to your favorite list')
         }
         else if (!clicked) { alert('added to your favorite list') }
-    }
-
-
-    const [item, setItem] = useState([])
-
-    useEffect(() => {
-
-        const getData = async () => {
-            const respuesta = await axios.get(`${process.env.REACT_APP_API_URL}/item/`);
-            setItem(respuesta.data);
-            console.log(item);
-        }
-
-
-        getData();
-
-    }, [])
+    };
 
 
     return (
@@ -82,7 +65,7 @@ export default function Product() {
                 component="img"
                 width="200"
                 image={item.imgurl}
-                alt="img"
+                alt="Imagen producto"
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
@@ -109,7 +92,7 @@ export default function Product() {
                 <CardContent>
                     <Typography paragraph>More Info:</Typography>
                     <Typography paragraph>
-                        {item.moreinfo}
+                        {item.price}
                     </Typography>
                 </CardContent>
             </Collapse>
