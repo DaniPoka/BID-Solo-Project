@@ -23,11 +23,12 @@ const ItemSchema = new mongoose.Schema({
     category: {
         type: String,
     },
-    quantity : {
+    stock: {
         type: Number
     },
     fav : {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
     
 

@@ -41,7 +41,7 @@ export default function App() {
                         path="/login"
                         element={<ProtectedRoute />}
                     />
-                    <Route path="/carrito" element={<Carro/>} />
+                    {/* <Route path="/carrito" element={<Carro/>} /> */}
                 </Routes>
             </Auth0ProviderWithRedirectCallback>
         </BrowserRouter>

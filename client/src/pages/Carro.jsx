@@ -1,12 +1,12 @@
 import React from 'react'
-import Carrito from '../components/Carrito/Carrito';
-import "../assets/css/carrito.css"
+import Carrito from '../components/Carrito';
+
 
 const Carro = () => {
   return (
     <div className='container lista-compra'>
         <h1>Lista de Compra</h1>
-        <Carrito/>
+        <Carrito />
     </div>
   )
 }

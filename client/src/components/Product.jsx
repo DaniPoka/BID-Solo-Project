@@ -30,38 +30,20 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function Product() {
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = useState(false);
 
     const { carro, setCarro, cantidad, setCantidad } = useContext(dataContext)
 
-    const [items, setItems] = useState([])
 
-    useEffect(() => {
-
-        const getData = async () => {
-            const respuesta = await axios.get(`${process.env.REACT_APP_API_URL}/item/`);
-            setItems(respuesta.data);
-            console.log(items);
-        }
-
-
-        getData();
-
-    }, [])
-
-    const handleShopClick = () => 
+    const handleShopClick = () => {
         alert('Added to the shopping cart');
-        setCantidad(cantidad + 1)
-        if (carro.find(item => item.id === product.id)) {
-            const products = carro.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
-            return setCarro([...products])
-        }
-        setCarro([...carro, product])
-    
+        setCantidad(cantidad + 1);
+    }
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
 
 
     const [clicked, setClicked] = useState(false);
@@ -74,6 +56,8 @@ export default function Product() {
     }
 
 
+
+
     return (
         <Card sx={{ maxWidth: 200, marginX: 5, marginY: 10 }}>
             <CardHeader
@@ -84,7 +68,7 @@ export default function Product() {
                 component="img"
                 width="200"
                 image={item.imgurl}
-                alt="Lapiz fabercastell"
+                alt="img"
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
