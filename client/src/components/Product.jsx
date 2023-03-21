@@ -56,6 +56,20 @@ export default function Product() {
     }
 
 
+    const [item, setItem] = useState([])
+
+    useEffect(() => {
+
+        const getData = async () => {
+            const respuesta = await axios.get(`${process.env.REACT_APP_API_URL}/item/`);
+            setItem(respuesta.data);
+            console.log(item);
+        }
+
+
+        getData();
+
+    }, [])
 
 
     return (
