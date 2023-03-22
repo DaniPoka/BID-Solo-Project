@@ -29,7 +29,8 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
-export default function Product(item) {
+export default function Product({item}) {
+
     const [expanded, setExpanded] = useState(false);
 
     const { carro, setCarro, cantidad, setCantidad } = useContext(dataContext);
@@ -38,6 +39,7 @@ export default function Product(item) {
     const handleShopClick = () => {
         alert('Added to the shopping cart');
         setCantidad(cantidad + 1);
+        // 
     };
 
     const handleExpandClick = () => {
