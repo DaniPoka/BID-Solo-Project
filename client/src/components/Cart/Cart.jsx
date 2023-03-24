@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../Context/DataContext';
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 
 export default function Cart({ onRemove, onUpdate }) {
     const { items } = useCart();
     const [cartItems, setCartItems] = useState(items);
+
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }, [cartItems]);
 
     const handleQuantityChange = (event, item) => {
         const newCartItems = cartItems.map(cartItem => {
@@ -15,12 +19,14 @@ export default function Cart({ onRemove, onUpdate }) {
         });
         setCartItems(newCartItems);
         onUpdate(item.id, parseInt(event.target.value));
+        window.location.reload();
     };
 
     const handleRemove = (item) => {
         const newCartItems = cartItems.filter(cartItem => cartItem.id !== item.id);
         setCartItems(newCartItems);
         onRemove(item.id);
+        window.location.reload();
     };
 
     const calculateTotalPrice = () => {
@@ -40,15 +46,17 @@ export default function Cart({ onRemove, onUpdate }) {
         });
         setCartItems(newCartItems);
         onUpdate(item.id, quantity);
+        window.location.reload();
     };
 
     return (
+        <>
         <div className="container">
             <TableContainer>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Title</TableCell>
+                            <TableCell>Item</TableCell>
                             <TableCell>Price</TableCell>
                             <TableCell>Quantity</TableCell>
                             <TableCell>Action</TableCell>
@@ -78,7 +86,9 @@ export default function Cart({ onRemove, onUpdate }) {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Typography variant="h6" className="totalPrice">Total Price: ${calculateTotalPrice()}</Typography>
+            <Typography variant="h6" className="d-flex align-items-center">Total Price: ${calculateTotalPrice()}</Typography>
+            <Button color="success" variant="outlined">Checkout</Button>
         </div>
+        </>
     );
 };
