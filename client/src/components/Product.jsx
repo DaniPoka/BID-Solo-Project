@@ -12,11 +12,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
-import { useContext } from 'react';
-import { dataContext } from './Context/DataContext';
-import axios from 'axios';
+import { useCart } from './Context/DataContext';
 import { useState } from 'react';
-import { useEffect } from 'react';
+
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -29,33 +27,30 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
-export default function Product({item}) {
+export default function Product({ item }) {
+
+    const { addItemToCart } = useCart();
 
     const [expanded, setExpanded] = useState(false);
-
-    const { carro, setCarro, cantidad, setCantidad } = useContext(dataContext);
-
-
-    const handleShopClick = () => {
-        alert('Added to the shopping cart');
-        setCantidad(cantidad + 1);
-        // 
-    };
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
+    const handleAddToCart = () => {
+        console.log('Adding item to cart:', item);
+        addItemToCart(item);
+    };
 
     const [clicked, setClicked] = useState(false);
     const handleClickFav = (id) => {
-        setClicked(current => !current)
+        setClicked((current) => !current);
         if (clicked) {
-            alert('product was deleted to your favorite list')
+            alert(`Product ${item.title} was removed from your favorite list`);
+        } else {
+            alert(`Product ${item.title} was added to your favorite list`);
         }
-        else if (!clicked) { alert('added to your favorite list') }
     };
-
 
     return (
         <Card sx={{ maxWidth: 200, marginX: 5, marginY: 10 }}>
@@ -75,11 +70,14 @@ export default function Product({item}) {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to cart" onClick={handleShopClick}>
-                    <ShoppingCartIcon />
+                <IconButton aria-label="add to favorites" onClick={() => handleClickFav(item._id)}>
+                    {clicked ? <Favorite sx={{ color: 'red' }} /> : <FavoriteBorder />}
                 </IconButton>
-                <IconButton aria-label="fav" onClick={handleClickFav}>
-                    {clicked ? <Favorite /> : <FavoriteBorder />}
+                <IconButton aria-label="add to cart" onClick={() => {
+                    console.log('Cart button clicked');
+                    handleAddToCart();
+                }}>
+                    <ShoppingCartIcon />
                 </IconButton>
                 <ExpandMore
                     expand={expanded}
@@ -92,9 +90,12 @@ export default function Product({item}) {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography paragraph>More Info:</Typography>
+                    <Typography paragraph>Full Description:</Typography>
                     <Typography paragraph>
-                        {item.price}
+                        {item.description}
+                    </Typography>
+                    <Typography paragraph>
+                        Price: {item.price} $
                     </Typography>
                 </CardContent>
             </Collapse>

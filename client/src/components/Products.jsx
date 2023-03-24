@@ -22,7 +22,7 @@ const Products = ({ }) => {
 
 
     return (
-        <main className='content'>
+        <main className='container'>
             <div className="toolBar" />
             <Grid container className='justify-content-center mt-5'>
                 {items.map((item) => {

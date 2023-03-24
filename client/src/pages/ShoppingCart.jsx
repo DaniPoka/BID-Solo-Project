@@ -1,23 +1,20 @@
 import React from 'react';
+import Cart from '../components/Cart/Cart'
 
+export default function ShoppingCart() {
+  const handleUpdate = (itemId, newQuantity) => {
+    // Update the quantity of the item with the given itemId
+    console.log(`Updating item ${itemId} to have quantity ${newQuantity}`);
+  };
 
-
-const ShoppingCart = () => {
-
-
-  const quantity = 0;
-
-  const totalPrice = 0;
+  const handleRemove = (itemId) => {
+    // Remove the item with the given itemId
+    console.log(`Removing item ${itemId}`);
+  };
 
   return (
-    <div className="d-flex align-items-center justify-content-center text-center min-vh-100">
-      <div>
-        <h1>Items in cart: {quantity}</h1>
-        <h1>Total: ${totalPrice}</h1>
-        <button>Checkout</button>
-      </div>
+    <div>
+      <Cart onUpdate={handleUpdate} onRemove={handleRemove} />
     </div>
   );
 }
-
-export default ShoppingCart
